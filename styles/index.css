@@ -1,0 +1,18 @@
+
+.discount-day-caption {
+    display: flex;
+    gap: 15px;
+}
+.flash-sales-rows {
+    display: flex;
+    gap: 20px ;
+}
+.products-discount-countdown {
+    display: grid;
+    grid-template-areas: 
+    "days hours minutes seconds"
+    "gün saat dakika saniye";
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+}
