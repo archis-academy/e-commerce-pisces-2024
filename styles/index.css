@@ -1,18 +1,102 @@
+*{
+  box-sizing: border-box;
+}
+
+.Todays-Products_Body {
+max-width: 1250px;
+margin: 0 auto;
+}
+
 
 .discount-day-caption {
-    display: flex;
-    gap: 15px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin: 0 auto;
+  /* max-width: 80%; */
 }
 .flash-sales-rows {
-    display: flex;
-    gap: 20px ;
+  display: flex;
+  gap: 40px;
+  /* max-width: 80%; */
+  border: 2px solid black;
+  margin: 0 auto;
 }
 .products-discount-countdown {
-    display: grid;
-    grid-template-areas: 
+  display: grid;
+  grid-template-areas:
     "days hours minutes seconds"
     "gün saat dakika saniye";
-    gap: 10px;
-    align-items: center;
-    text-align: center;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+}
+.todays-before-tag {
+  width: 20px;
+  height: 45px;
+  border-radius: 20px;
+  background-color: red;
+}
+.way-arrow {
+  margin-left: auto;
+}
+.products-card-container {
+  border: 3px solid red;
+  /* max-width: 80%; */
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.card-for-products {
+  border: 2px solid green;
+  padding: 20px;
+  display: grid;
+  align-items: center;
+}
+
+.gamepad-old-price {
+  color: rgba(0, 0, 0, 1);
+  font-weight: 100;
+}
+.gamepad-new-price {
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+  color: rgba(219, 68, 68, 1);
+}
+.red-gamepad-img {
+  margin: 0 auto;
+}
+.products-img-container {
+  display: flex;
+  background-color: wheat;
+  position: relative;
+}
+.products-ispect-box {
+  display: grid;
+  top: 5%;
+  right: 5%;
+  position: absolute;
+  gap: 10px;
+  justify-items: center;
+}
+.card-discount-rate {
+  position: absolute;
+  background-color: rgba(219, 68, 68, 1);
+  padding: 5px;
+  border-radius: 5px;
+  top: 5%;
+}
+
+#jsdeneme img {
+  max-width: 175px;
+  max-height: 175px;
+}
+
+#jsdeneme {
+  display: flex;
+  grid-template-columns: repeat(4, 1fr);
+  
 }
