@@ -1,48 +1,60 @@
-*{
+* {
   box-sizing: border-box;
 }
 
 .Todays-Products_Body {
-max-width: 1250px;
-margin: 0 auto;
+  max-width: 1250px;
+  margin: 0 auto;
 }
-
 
 .discount-day-caption {
   display: flex;
   gap: 15px;
   align-items: center;
   margin: 0 auto;
-  /* max-width: 80%; */
+  padding-left: 20px;
 }
 .flash-sales-rows {
   display: flex;
-  gap: 40px;
-  /* max-width: 80%; */
-  border: 2px solid black;
   margin: 0 auto;
+  padding-left: 20px;
+  flex-wrap: wrap;
+}
+.flash-sales-heading {
+  letter-spacing: 2px;
+  font-size: 2rem;
+  font-weight: bold;
 }
 .products-discount-countdown {
   display: grid;
   grid-template-areas:
     "days hours minutes seconds"
     "gün saat dakika saniye";
-  gap: 10px;
+  column-gap: 10px;
   align-items: center;
   text-align: center;
+  font-weight: bold;
+  margin-left: 13%;
 }
+
+#gun,
+#saat,
+#dakika,
+#saniye {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
 .todays-before-tag {
   width: 20px;
   height: 45px;
-  border-radius: 20px;
+  border-radius: 5px;
   background-color: red;
 }
 .way-arrow {
   margin-left: auto;
 }
 .products-card-container {
-  border: 3px solid red;
-  /* max-width: 80%; */
   margin: 0 auto;
   padding: 20px;
   display: flex;
@@ -50,7 +62,6 @@ margin: 0 auto;
   gap: 20px;
 }
 .card-for-products {
-  border: 2px solid green;
   padding: 20px;
   display: grid;
   align-items: center;
@@ -71,32 +82,91 @@ margin: 0 auto;
 }
 .products-img-container {
   display: flex;
-  background-color: wheat;
   position: relative;
+  background-color: rgba(245, 245, 245, 1);
+  height: 350px;
 }
+
+.products-add-cart {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  display: none;
+}
+
+.products-add-cart button {
+  outline: none;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: white;
+  width: 100%;
+}
+
+.products-img-container:hover {
+  .products-add-cart {
+    display: block;
+  }
+}
+
 .products-ispect-box {
   display: grid;
-  top: 5%;
+  top: -5%;
   right: 5%;
   position: absolute;
   gap: 10px;
   justify-items: center;
+  font-size: 1.5rem;
 }
+
+.products-ispect-box button {
+  all: unset;
+  cursor: pointer;
+}
+
+
 .card-discount-rate {
   position: absolute;
   background-color: rgba(219, 68, 68, 1);
   padding: 5px;
   border-radius: 5px;
-  top: 5%;
+  top: -5%;
+  left: 5%;
 }
 
-#jsdeneme img {
-  max-width: 175px;
-  max-height: 175px;
+#jsdeneme .red-gamepad-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 #jsdeneme {
-  display: flex;
-  grid-template-columns: repeat(4, 1fr);
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  flex-wrap: wrap;
 }
+
+.way-arrow {
+  display: flex;
+  margin-right: 10%;
+  align-items: center;
+  gap: 30px;
+  cursor: pointer;
+}
+.way-arrow i {
+  font-size: 1.5rem;
+}
+
+#card-next-arrow,
+#card-prev-arrow {
+  cursor: pointer;
+  all: unset;
+}
+.card-for-products:nth-child(3n-1) .star-for-product img:last-of-type {
+  filter: grayscale(100%);
+}
+
+
+/* <img src="./images/wishlist-icon.svg" class= wishlist-icon> */

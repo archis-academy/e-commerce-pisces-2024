@@ -29,7 +29,7 @@ function format(pm) {
   return pm < 10 ? `0${pm}` : pm;
 }
 
-let denemeDivi = document.querySelector("#jsdeneme");
+let flashSalesCarousel = document.querySelector("#jsdeneme");
 
 let allProducts = [];
 
@@ -42,9 +42,38 @@ async function getProducts() {
 
 getProducts();
 
+let todaysPrevQuatro = 0;
+let todaysAfterQuatro = 4;
+
+const cardNextArrow = document.querySelector("#card-next-arrow");
+const cardPrevArrow = document.querySelector("#card-prev-arrow");
+
+cardPrevArrow.addEventListener("click", () => {
+  todaysAfterQuatro -= 4;
+  todaysPrevQuatro -= 4;
+  if (todaysAfterQuatro >= allProducts.indexOf(0)) {
+    todaysPrevQuatro = 0;
+    todaysAfterQuatro = 4;
+  }
+  renderTodays();
+});
+
+cardNextArrow.addEventListener("click", () => {
+  todaysAfterQuatro += 4;
+  todaysPrevQuatro += 4;
+  if (todaysAfterQuatro >= allProducts.length) {
+    todaysPrevQuatro = 0;
+    todaysAfterQuatro = 4;
+  }
+  renderTodays();
+});
+
 function renderTodays() {
-  const flashSaleSlideProduct = allProducts.slice(0,12);
-  const yazDostumBunlara = flashSaleSlideProduct
+  const flashSaleSlideProduct = allProducts.slice(
+    todaysPrevQuatro,
+    todaysAfterQuatro
+  );
+  const flashSalesOnList = flashSaleSlideProduct
     .map((products) => {
       return `
       <div class="card-for-products">
@@ -53,12 +82,19 @@ function renderTodays() {
           <img src= ${products.image} alt= ${products.title}
           class="red-gamepad-img">
           <div class="products-ispect-box">
-            <img src="./images/wishlist-icon.svg" alt="">
-            <img src="./images/icon-eye.svg" alt="">
+          <button id="fav-add-it"><i id="kalp-foto" class="fa-regular fa-heart"></i>
+          </button> 
+          <button> <i class="fa-regular fa-eye"></i></i>
+          </button>            
           </div>
+          <div class=products-add-cart> <button> ADD TO CART </button> </div>
         </div>
         <h4> ${products.title}</h4>
-        <p class="gamepad-new-price">${products.price}<span class="gamepad-old-price"><s>${products.price}</s></span></p>
+        <p class="gamepad-new-price">${(
+          products.price -
+          (products.price * 50) / 100
+        ).toFixed(2)}
+        <span class="gamepad-old-price"><s>${products.price}</s></span></p>
         <div class="star-for-product">
                 <img src="./images/star-for-vote.png" alt="">
                 <img src="./images/star-for-vote.png" alt="">
@@ -72,5 +108,12 @@ function renderTodays() {
     })
     .join("");
 
-  denemeDivi.innerHTML = yazDostumBunlara;
+  flashSalesCarousel.innerHTML = flashSalesOnList;
 }
+
+// const heartBtn = document.getElementById("fav-add-it");
+
+// heartBtn.addEventListener("click", function () {
+//   var newHeartFoto = document.getElementById("kalp-foto");
+//   newHeartFoto.innerHTML =
+// });
