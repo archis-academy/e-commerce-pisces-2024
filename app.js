@@ -74,27 +74,30 @@ function renderTodays() {
     todaysAfterQuatro
   );
   const flashSalesOnList = flashSaleSlideProduct
-    .map((products) => {
+    .map((product) => {
       return `
       <div class="card-for-products">
         <div class="products-img-container">
             <p class="card-discount-rate">-40%</p>
-          <img src= ${products.image} alt= ${products.title}
+          <img src= ${product.image} alt= ${product.title}
           class="red-gamepad-img">
           <div class="products-ispect-box">
-          <button id="fav-add-it"><i id="kalp-foto" class="fa-regular fa-heart"></i>
+          <button 
+          onclick="addToWishList('${product.id}',
+           '${product.title}')">
+      <i id="kalp-foto" class="fa-regular fa-heart"></i>
           </button> 
           <button> <i class="fa-regular fa-eye"></i></i>
           </button>            
           </div>
           <div class=products-add-cart> <button> ADD TO CART </button> </div>
         </div>
-        <h4> ${products.title}</h4>
+        <h4> ${product.title}</h4>
         <p class="gamepad-new-price">${(
-          products.price -
-          (products.price * 50) / 100
+          product.price -
+          (product.price * 50) / 100
         ).toFixed(2)}
-        <span class="gamepad-old-price"><s>${products.price}</s></span></p>
+        <span class="gamepad-old-price"><s>${product.price}</s></span></p>
         <div class="star-for-product">
                 <img src="./images/star-for-vote.png" alt="">
                 <img src="./images/star-for-vote.png" alt="">
@@ -111,9 +114,63 @@ function renderTodays() {
   flashSalesCarousel.innerHTML = flashSalesOnList;
 }
 
-// const heartBtn = document.getElementById("fav-add-it");
+// function addToWishList(productsTitle) {
+//   console.log(`ürün "${productsTitle}" eklendi`);
+// // } else {
+// //   console.log(`ürün "${productsTitle}" zaten ekli`);
+// // }
 
-// heartBtn.addEventListener("click", function () {
-//   var newHeartFoto = document.getElementById("kalp-foto");
-//   newHeartFoto.innerHTML =
-// });
+// function addToWishList(productId) {
+// addToWishList(`ürün "${product.id}" eklendi `);
+// console.log(`ürün "${product.id}" eklendi `);
+
+// if (products.id === products.id) {
+//   console.log("ürün eklenmedi");
+// } else {
+//   console.log("ürün eklendi")
+// }
+// }
+
+// function addToWishList(productId) {
+//   const wishListProducts =
+//     JSON.parse(localStorage.getItem("wishListProducts")) || [];
+
+//   const isWishListed = wishListProducts.some(
+//     (product) => product.id === productId
+//   );
+
+//   if (!isWishListed) {
+//     const productToAdd = allProducts.find(
+//       (product) => product.id === productId
+//     );
+//     localStorage.setItem(
+//       "wishListProducts",
+//       JSON.stringify([...wishListProducts, productToAdd])
+//     );
+//     console.log("ürün eklendi");
+//   } else {
+//     alert("bu ürün zate favorinizde");
+//   }
+// }
+
+function addToWishList(productId) {
+  const wishListProducts =
+    JSON.parse(localStorage.getItem("wishListProducts")) || [];
+
+  const isWishListed = wishListProducts.some(
+    (product) => product.id === productId
+  );
+
+  if (!isWishListed) {
+    const productToAdd = allProducts.find(
+      (product) => product.id === productId
+    );
+
+    localStorage.setItem(
+      "wishListProducts",
+      JSON.stringify([...wishListProducts, productToAdd])
+    );
+  } else {
+    alert("Bu ürün zaten favorilerinizde");
+  }
+}
