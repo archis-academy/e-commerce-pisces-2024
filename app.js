@@ -1,3 +1,5 @@
+// Esat/[TO-2]Homepage-Todays-product-start
+
 let istenilenSure = 43200;
 let toplamSaniye = istenilenSure * 60;
 let sayacElement = document.querySelector("#sayac-container");
@@ -29,7 +31,7 @@ function format(pm) {
   return pm < 10 ? `0${pm}` : pm;
 }
 
-let flashSalesCarousel = document.querySelector("#jsdeneme");
+let flashSalesCarousel = document.querySelector("#Products-Slider-JS");
 
 let allProducts = [];
 
@@ -80,24 +82,27 @@ function renderTodays() {
         <div class="products-img-container">
             <p class="card-discount-rate">-40%</p>
           <img src= ${product.image} alt= ${product.title}
-          class="red-gamepad-img">
+          class="flash-product-img-${product.id}" id="flash-product-img">
           <div class="products-ispect-box">
           <button 
-          onclick="addToWishList('${product.id}',
-           '${product.title}')">
-      <i id="kalp-foto" class="fa-regular fa-heart"></i>
+          onclick="addToWishlist(${product.id})">
+          <i id="heart-icon-${product.id}" class="fa-regular fa-heart"></i>
           </button> 
-          <button> <i class="fa-regular fa-eye"></i></i>
+          <button onclick="addToCartlist(${
+            product.id
+          })"> <i class="fa-solid fa-cart-shopping"></i>
           </button>            
           </div>
-          <div class=products-add-cart> <button> ADD TO CART </button> </div>
+          <div class=products-add-cart> <button onclick="addToCartlist(${
+            product.id
+          })"> ADD TO CART </button> </div>
         </div>
         <h4> ${product.title}</h4>
-        <p class="gamepad-new-price">${(
+        <p class="flash-product-new-price">${(
           product.price -
           (product.price * 50) / 100
         ).toFixed(2)}
-        <span class="gamepad-old-price"><s>${product.price}</s></span></p>
+        <span class="flash-product-old-price"><s>${product.price}</s></span></p>
         <div class="star-for-product">
                 <img src="./images/star-for-vote.png" alt="">
                 <img src="./images/star-for-vote.png" alt="">
@@ -114,63 +119,79 @@ function renderTodays() {
   flashSalesCarousel.innerHTML = flashSalesOnList;
 }
 
-// function addToWishList(productsTitle) {
-//   console.log(`ürün "${productsTitle}" eklendi`);
-// // } else {
-// //   console.log(`ürün "${productsTitle}" zaten ekli`);
-// // }
+function addToWishlist(productId) {
+  const heartIcon = document.querySelector(`#heart-icon-${productId}`);
 
-// function addToWishList(productId) {
-// addToWishList(`ürün "${product.id}" eklendi `);
-// console.log(`ürün "${product.id}" eklendi `);
+  const wishlistProducts =
+    JSON.parse(localStorage.getItem("wishlistProducts")) || [];
 
-// if (products.id === products.id) {
-//   console.log("ürün eklenmedi");
-// } else {
-//   console.log("ürün eklendi")
-// }
-// }
-
-// function addToWishList(productId) {
-//   const wishListProducts =
-//     JSON.parse(localStorage.getItem("wishListProducts")) || [];
-
-//   const isWishListed = wishListProducts.some(
-//     (product) => product.id === productId
-//   );
-
-//   if (!isWishListed) {
-//     const productToAdd = allProducts.find(
-//       (product) => product.id === productId
-//     );
-//     localStorage.setItem(
-//       "wishListProducts",
-//       JSON.stringify([...wishListProducts, productToAdd])
-//     );
-//     console.log("ürün eklendi");
-//   } else {
-//     alert("bu ürün zate favorinizde");
-//   }
-// }
-
-function addToWishList(productId) {
-  const wishListProducts =
-    JSON.parse(localStorage.getItem("wishListProducts")) || [];
-
-  const isWishListed = wishListProducts.some(
+  const isWishlisted = wishlistProducts.some(
     (product) => product.id === productId
   );
 
-  if (!isWishListed) {
+  if (!isWishlisted) {
     const productToAdd = allProducts.find(
       (product) => product.id === productId
     );
 
     localStorage.setItem(
-      "wishListProducts",
-      JSON.stringify([...wishListProducts, productToAdd])
+      "wishlistProducts",
+      JSON.stringify([...wishlistProducts, productToAdd])
     );
+    heartIcon.classList.remove("fa-regular");
+    heartIcon.classList.add("fa-solid");
   } else {
-    alert("Bu ürün zaten favorilerinizde");
+    deleteWishlistProduct(productId);
+    heartIcon.classList.add("fa-regular");
+    heartIcon.classList.remove("fa-solid");
+
   }
 }
+
+function deleteWishlistProduct(productId) {
+  const wishlistProducts =
+    JSON.parse(localStorage.getItem("wishlistProducts")) || [];
+
+  const filteredWishlistProducts = wishlistProducts.filter(
+    (product) => product.id !== productId
+  );
+
+  localStorage.setItem(
+    "wishlistProducts",
+    JSON.stringify(filteredWishlistProducts)
+  );
+}
+
+
+
+
+
+function addToCartlist(productId) {
+  const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
+
+  const isOnCart = cartProducts.some((product) => product.id === productId);
+
+  if (!isOnCart) {
+    const putInCart = allProducts.find((product) => product.id === productId);
+
+    cartProducts.push(putInCart);
+
+    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+  } else {
+    deleteCartlistProducts(productId);
+  }
+}
+
+function deleteCartlistProducts(productId) {
+  const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
+
+  const filteredCartlistProducts = cartProducts.filter(
+    (product) => product.id !== productId
+  );
+  localStorage.setItem(
+    "cartProducts",
+    JSON.stringify(filteredCartlistProducts)
+  );
+}
+
+// Esat/[TO-2]Homepage-Todays-product-END
