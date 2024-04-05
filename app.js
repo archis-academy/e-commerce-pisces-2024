@@ -109,7 +109,7 @@ function renderTodays() {
                 <img src="./images/star-for-vote.png" alt="">
                 <img src="./images/star-for-vote.png" alt="">
                 <img src="./images/star-for-vote.png" alt="">
-                <span>(88)</span>
+                <span>(${product.rating.count})</span>
         </div>
       </div>
     `;
@@ -144,7 +144,6 @@ function addToWishlist(productId) {
     deleteWishlistProduct(productId);
     heartIcon.classList.add("fa-regular");
     heartIcon.classList.remove("fa-solid");
-
   }
 }
 
@@ -161,10 +160,6 @@ function deleteWishlistProduct(productId) {
     JSON.stringify(filteredWishlistProducts)
   );
 }
-
-
-
-
 
 function addToCartlist(productId) {
   const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];

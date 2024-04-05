@@ -1,10 +1,6 @@
 /* Esat/[TO-2]Homepage-Todays-product-start */
 
-* {
-  box-sizing: border-box;
-}
-
-.todays-products-container{
+.todays-products-container {
   max-width: 1250px;
   margin: 0 auto;
 }
@@ -116,7 +112,6 @@
 
 .products-ispect-box {
   display: grid;
-  /* top: -5%; */
   right: 5%;
   position: absolute;
   gap: 10px;
@@ -128,7 +123,6 @@
   all: unset;
   cursor: pointer;
 }
-
 
 .card-discount-rate {
   position: absolute;
@@ -176,4 +170,3 @@
 }
 
 /* Esat/[TO-2]Homepage-Todays-product-END */
-
