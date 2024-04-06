@@ -12,6 +12,11 @@
   margin: 15px auto;
   padding-left: 20px;
 }
+.discount-day-caption p {
+  color: rgba(219, 68, 68, 1);
+  font-family: 'inter', sans-serif;
+  font-weight: bold;
+}
 .flash-sales-rows {
   display: flex;
   margin: 15px auto;
@@ -22,6 +27,7 @@
   letter-spacing: 2px;
   font-size: 2rem;
   font-weight: bold;
+  font-family: 'inter', sans-serif;
 }
 .products-discount-countdown {
   display: grid;
@@ -35,10 +41,10 @@
   margin-left: 13%;
 }
 
-#gun,
-#saat,
-#dakika,
-#saniye {
+.gun,
+.saat,
+.dakika,
+.saniye {
   font-weight: bold;
   font-size: 2rem;
 }
@@ -52,14 +58,7 @@
 .way-arrow {
   margin-left: auto;
 }
-.products-card-container {
-  margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 1250px;
-}
+
 .card-for-products {
   padding: 20px;
   display: grid;
@@ -132,17 +131,20 @@
   left: 5%;
 }
 
-#Products-Slider-JS #flash-product-img {
+.ProductsSliderJS #flash-product-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-#Products-Slider-JS {
+.ProductsSliderJS {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   flex-wrap: wrap;
+  max-width: 1250px;
+  gap: 20px;
 }
+
 
 .way-arrow {
   display: flex;
@@ -155,8 +157,8 @@
   font-size: 1.5rem;
 }
 
-#card-next-arrow,
-#card-prev-arrow {
+.card-next-arrow,
+.card-prev-arrow {
   cursor: pointer;
   all: unset;
   background-color: rgba(245, 245, 245, 1);

@@ -2,11 +2,11 @@
 
 let istenilenSure = 43200;
 let toplamSaniye = istenilenSure * 60;
-let sayacElement = document.querySelector("#sayac-container");
-let productDiscountDay = document.querySelector("#gun");
-let productDiscountHrs = document.querySelector("#saat");
-let productDiscountMin = document.querySelector("#dakika");
-let productDiscountSec = document.querySelector("#saniye");
+let sayacElement = document.querySelector(".products-discount-countdown");
+let productDiscountDay = document.querySelector(".gun");
+let productDiscountHrs = document.querySelector(".saat");
+let productDiscountMin = document.querySelector(".dakika");
+let productDiscountSec = document.querySelector(".saniye");
 
 let sayacBaslat = setInterval(() => {
   if (toplamSaniye <= 0) {
@@ -31,7 +31,7 @@ function format(pm) {
   return pm < 10 ? `0${pm}` : pm;
 }
 
-let flashSalesCarousel = document.querySelector("#Products-Slider-JS");
+let flashSalesCarousel = document.querySelector(".ProductsSliderJS");
 
 let allProducts = [];
 
@@ -47,8 +47,8 @@ getProducts();
 let todaysPrevQuatro = 0;
 let todaysAfterQuatro = 4;
 
-const cardNextArrow = document.querySelector("#card-next-arrow");
-const cardPrevArrow = document.querySelector("#card-prev-arrow");
+const cardNextArrow = document.querySelector(".card-next-arrow");
+const cardPrevArrow = document.querySelector(".card-prev-arrow");
 
 cardPrevArrow.addEventListener("click", () => {
   todaysAfterQuatro -= 4;
