@@ -44,17 +44,8 @@
     width: 100%;
     padding: 20px;
     display: grid;
-    justify-content: center;
-    text-align: center;
+    place-items: center;
 }
 .category-list img {
     margin: 0 auto;
 }
-
-/* #categories-only:hover{
-    background-color: brown;
-
-}
-#categories-only:hover img {
-    stroke: white;
-} */
