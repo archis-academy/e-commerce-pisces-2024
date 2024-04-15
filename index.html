@@ -4,10 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exclusive E-Commerce</title>
-    <link rel="stylesheet" href="styles/shared.css">
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/shared.css" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <script
+      src="https://kit.fontawesome.com/fbc37fbe24.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
+    <!-- Esat/[TO-2]Homepage-Todays-product-START -->
+    <article class="todays-products-container">
+      <div class="discount-day-caption">
+        <span class="todays-before-tag"></span>
+        <p>Today's</p>
+      </div>
+      <div class="flash-sales-rows">
+        <h2 class="flash-sales-heading">Flash Sales</h2>
+        <div id="sayac-container" class="products-discount-countdown">
+          <div class="days">days</div>
+          <div class="hours">hours</div>
+          <div class="minutes">minutes</div>
+          <div class="seconds">seconds</div>
+
+          <div class="gun"></div>
+          <div class="saat"></div>
+          <div class="dakika"></div>
+          <div class="saniye"></div>
+        </div>
+        <div class="way-arrow">
+          <button class="card-prev-arrow">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <button class="card-next-arrow">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <article class="ProductsSliderJS"></article>
+    </article>
+    <!-- Esat/[TO-2]Homepage-Todays-product-END -->
+
     <script src="app.js"></script>
   </body>
 </html>
