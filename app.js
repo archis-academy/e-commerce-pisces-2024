@@ -1,5 +1,19 @@
-// Esat/[TO-2]Homepage-Todays-product-start
+// GENEL ÜRÜNLERİ ALDIĞIMIZ YER BAŞLANGICI
 
+let allProducts = [];
+
+async function getProducts() {
+  const response = await fetch("https://fakestoreapi.com/products");
+  const data = await response.json();
+  allProducts = data;
+  renderTodays();
+}
+
+getProducts();
+
+// GENEL ÜRÜNLERİ ALDIĞIMIZ YER SONU
+
+// Esat/[TO-2]Homepage-Todays-product-start
 let istenilenSure = 43200;
 let toplamSaniye = istenilenSure * 60;
 let sayacElement = document.querySelector(".products-discount-countdown");
@@ -32,17 +46,6 @@ function format(pm) {
 }
 
 let flashSalesCarousel = document.querySelector(".ProductsSliderJS");
-
-let allProducts = [];
-
-async function getProducts() {
-  const response = await fetch("https://fakestoreapi.com/products");
-  const data = await response.json();
-  allProducts = data;
-  renderTodays();
-}
-
-getProducts();
 
 let todaysPrevQuatro = 0;
 let todaysAfterQuatro = 4;

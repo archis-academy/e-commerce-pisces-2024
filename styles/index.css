@@ -14,7 +14,7 @@
 }
 .discount-day-caption p {
   color: rgba(219, 68, 68, 1);
-  font-family: 'inter', sans-serif;
+  font-family: "inter", sans-serif;
   font-weight: bold;
 }
 .flash-sales-rows {
@@ -27,7 +27,7 @@
   letter-spacing: 2px;
   font-size: 2rem;
   font-weight: bold;
-  font-family: 'inter', sans-serif;
+  font-family: "inter", sans-serif;
 }
 .products-discount-countdown {
   display: grid;
@@ -144,7 +144,6 @@
   max-width: 1250px;
   gap: 20px;
 }
-
 
 .way-arrow {
   display: flex;
