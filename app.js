@@ -3,7 +3,7 @@
 const categoriesBox = document.querySelectorAll(".category-list");
 
 categoriesBox.forEach((categories) => {
-  categories.addEventListener("mouseenter", (event) => {
+  categories.addEventListener("mouseenter", () => {
     const categoriesPaths = categories.querySelectorAll(".category-svg-path");
     const categoriesTitle = categories.querySelectorAll(".slider-category-name");
 
@@ -21,7 +21,7 @@ categoriesBox.forEach((categories) => {
     categories.style.backgroundColor = "rgba(219, 68, 68, 1)";
   });
 
-  categories.addEventListener("mouseleave", (event) => {
+  categories.addEventListener("mouseleave", () => {
     const categoriesPaths = categories.querySelectorAll(".category-svg-path");
     const categoriesTitle = categories.querySelectorAll(".slider-category-name");
 

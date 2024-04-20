@@ -59,4 +59,11 @@
   .browse-category-slider {
     display: grid;
   }
+  .browse-by-category-heading h2 {
+    font-size: 2rem;
+    font-family: "inter", sans-serif;
+  }
+  .category-list{
+    padding: 0;
+  }
 }
