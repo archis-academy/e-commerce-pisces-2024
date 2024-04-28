@@ -1,3 +1,176 @@
+/* Esat/[TO-2]Homepage-Todays-product-start */
+
+.todays-products-container {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.discount-day-caption {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin: 15px auto;
+  padding-left: 20px;
+}
+.discount-day-caption p {
+  color: rgba(219, 68, 68, 1);
+  font-family: "inter", sans-serif;
+  font-weight: bold;
+}
+.flash-sales-rows {
+  display: flex;
+  margin: 15px auto;
+  padding-left: 20px;
+  flex-wrap: wrap;
+}
+.flash-sales-heading {
+  letter-spacing: 2px;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "inter", sans-serif;
+}
+.products-discount-countdown {
+  display: grid;
+  grid-template-areas:
+    "days hours minutes seconds"
+    "gün saat dakika saniye";
+  column-gap: 10px;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 13%;
+}
+
+.gun,
+.saat,
+.dakika,
+.saniye {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.todays-before-tag {
+  width: 20px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: red;
+}
+.way-arrow {
+  margin-left: auto;
+}
+
+.card-for-products {
+  padding: 20px;
+  display: grid;
+  align-items: center;
+  gap: 15px;
+}
+
+.flash-product-old-price {
+  color: rgba(0, 0, 0, 1);
+  font-weight: 100;
+}
+.flash-product-new-price {
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+  color: rgba(219, 68, 68, 1);
+}
+
+.products-img-container {
+  display: flex;
+  position: relative;
+  background-color: rgba(245, 245, 245, 1);
+  height: 350px;
+}
+
+.products-add-cart {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  display: none;
+}
+
+.products-add-cart button {
+  outline: none;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: white;
+  width: 100%;
+}
+
+.products-img-container:hover {
+  .products-add-cart {
+    display: block;
+  }
+}
+
+.products-ispect-box {
+  display: grid;
+  right: 5%;
+  position: absolute;
+  gap: 10px;
+  justify-items: center;
+  font-size: 1.5rem;
+}
+
+.products-ispect-box button {
+  all: unset;
+  cursor: pointer;
+}
+
+.card-discount-rate {
+  position: absolute;
+  background-color: rgba(219, 68, 68, 1);
+  padding: 5px;
+  border-radius: 5px;
+  top: -5%;
+  left: 5%;
+}
+
+.ProductsSliderJS #flash-product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ProductsSliderJS {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  flex-wrap: wrap;
+  max-width: 1250px;
+  gap: 20px;
+}
+
+.way-arrow {
+  display: flex;
+  margin-right: 10%;
+  align-items: center;
+  gap: 30px;
+  cursor: pointer;
+}
+.way-arrow i {
+  font-size: 1.5rem;
+}
+
+.card-next-arrow,
+.card-prev-arrow {
+  cursor: pointer;
+  all: unset;
+  background-color: rgba(245, 245, 245, 1);
+  border-radius: 30px;
+  padding: 10px;
+  margin: 5%;
+}
+.card-for-products:nth-child(3n-1) .star-for-product img:last-of-type {
+  filter: grayscale(100%);
+}
+
+/* Esat/[TO-2]Homepage-Todays-product-END */
+
 /* Esat/E-3/Homepage-By-Category START */
 .browser-category-container {
   max-width: 1250px;
