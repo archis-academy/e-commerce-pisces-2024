@@ -18,6 +18,7 @@ function renderWishlistProducts() {
   wishlistContainer.innerHTML = wishlistProducts
     .map((product) => {
       return `
+      
        <div class="productsInWishlist">
         <div class="ProdcutImageContainer">
         <button onclick="deleteWishlistProduct(${product.id})"><i class="fa-solid fa-trash"></i></button>
