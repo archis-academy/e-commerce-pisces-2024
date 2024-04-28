@@ -1,5 +1,5 @@
 
-
+// Esat/E-3/Homepage-By-Category START
 const categoriesBox = document.querySelectorAll(".category-list");
 
 categoriesBox.forEach((categories) => {
@@ -38,3 +38,4 @@ categoriesBox.forEach((categories) => {
     categories.style.backgroundColor = "white";
   });
 });
+// Esat/E-3/Homepage-By-Category END
