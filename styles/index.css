@@ -170,3 +170,75 @@
 }
 
 /* Esat/[TO-2]Homepage-Todays-product-END */
+
+/* Esat/E-3/Homepage-By-Category START */
+.browser-category-container {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+.browser-category-title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-family: "poppins", sans-serif;
+  color: rgba(219, 68, 68, 1);
+}
+
+.browser-category-before {
+  width: 20px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: red;
+}
+.browse-by-category-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.browse-by-category-heading h2 {
+  font-size: 3rem;
+  font-family: "inter", sans-serif;
+}
+.browse-arrow-box {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.browse-arrow-box i {
+  cursor: pointer;
+  background-color: rgba(245, 245, 245, 1);
+  border-radius: 30px;
+  padding: 10px;
+  margin: 5%;
+}
+.browse-category-slider {
+  display: flex;
+  gap: 20px;
+}
+.category-list {
+  border: 2px solid black;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  place-items: center;
+}
+.category-list img {
+  margin: 0 auto;
+}
+.slider-category-name {
+  font-family: "poppins", sans-serif;
+}
+@media (max-width: 800px) {
+  .browse-category-slider {
+    display: grid;
+  }
+  .browse-by-category-heading h2 {
+    font-size: 2rem;
+    font-family: "inter", sans-serif;
+  }
+  .category-list{
+    padding: 0;
+  }
+}
+/* Esat/E-3/Homepage-By-Category END */
