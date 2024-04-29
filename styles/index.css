@@ -237,8 +237,34 @@
     font-size: 2rem;
     font-family: "inter", sans-serif;
   }
-  .category-list{
+  .category-list {
     padding: 0;
   }
 }
 /* Esat/E-3/Homepage-By-Category END */
+
+.best-selling-products-container {
+  display: grid;
+  max-width: 1250px;
+  margin: 0 auto;
+  row-gap: 20px;
+}
+
+.best-selling-wiewall {
+  border: none;
+  background-color: rgba(219, 68, 68, 1);
+  padding: 15px 40px;
+  color: white;
+  cursor: pointer;
+}
+
+#best-selling-podyum {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+#seller-product-img {
+  width: 100%;
+  object-fit: contain;
+}

@@ -194,14 +194,15 @@ function deleteCartlistProducts(productId) {
 
 // Esat/[TO-2]Homepage-Todays-product-END
 
-
 // Esat/E-3/Homepage-By-Category START
 const categoriesBox = document.querySelectorAll(".category-list");
 
 categoriesBox.forEach((categories) => {
   categories.addEventListener("mouseenter", () => {
     const categoriesPaths = categories.querySelectorAll(".category-svg-path");
-    const categoriesTitle = categories.querySelectorAll(".slider-category-name");
+    const categoriesTitle = categories.querySelectorAll(
+      ".slider-category-name"
+    );
 
     if (categoriesPaths) {
       categoriesPaths.forEach((path) => {
@@ -219,7 +220,9 @@ categoriesBox.forEach((categories) => {
 
   categories.addEventListener("mouseleave", () => {
     const categoriesPaths = categories.querySelectorAll(".category-svg-path");
-    const categoriesTitle = categories.querySelectorAll(".slider-category-name");
+    const categoriesTitle = categories.querySelectorAll(
+      ".slider-category-name"
+    );
 
     if (categoriesPaths) {
       categoriesPaths.forEach((path) => {
@@ -235,3 +238,28 @@ categoriesBox.forEach((categories) => {
   });
 });
 // Esat/E-3/Homepage-By-Category END
+
+// Esat/E-4/Homepage-Best-Selling-Products START
+
+
+function renderSellerProducts() {
+  const sellerProducts = allProducts.slice(5, 10);
+   
+  const sellerProductsHTML = sellerProducts
+    .map((product) => {
+      return `
+        <div>${product.image}</div>
+    `;
+    })
+    .join("");
+
+  const bestSellingContainer = document.getElementById(
+    "best-selling-podyum"
+  );
+  bestSellingContainer.innerHTML = sellerProductsHTML;
+
+
+}
+renderSellerProducts()
+
+// Esat/E-4/Homepage-Best-Selling-Products End
