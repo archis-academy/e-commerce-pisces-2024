@@ -53,7 +53,7 @@
   width: 20px;
   height: 45px;
   border-radius: 5px;
-  background-color: red;
+  background-color: rgba(219, 68, 68, 1);
 }
 .way-arrow {
   margin-left: auto;
@@ -82,6 +82,7 @@
   position: relative;
   background-color: rgba(245, 245, 245, 1);
   height: 350px;
+  background-color: transparent;
 }
 
 .products-add-cart {
@@ -174,7 +175,7 @@
 /* Esat/E-3/Homepage-By-Category START */
 .browser-category-container {
   max-width: 1250px;
-  margin: 0 auto;
+  margin: 40px auto;
 }
 .browser-category-title {
   display: flex;
@@ -188,12 +189,13 @@
   width: 20px;
   height: 45px;
   border-radius: 5px;
-  background-color: red;
+  background-color:rgba(219, 68, 68, 1);
 }
 .browse-by-category-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 30px 0;
 }
 .browse-by-category-heading h2 {
   font-size: 3rem;
@@ -210,7 +212,6 @@
   background-color: rgba(245, 245, 245, 1);
   border-radius: 30px;
   padding: 10px;
-  margin: 5%;
 }
 .browse-category-slider {
   display: flex;
@@ -246,11 +247,12 @@
 .best-selling-products-container {
   display: grid;
   max-width: 1250px;
-  margin: 0 auto;
+  margin: 60px auto;
   row-gap: 20px;
+  font-family: 'poppins', sans-serif;
 }
 
-.best-selling-wiewall {
+#best-selling-wiewall {
   border: none;
   background-color: rgba(219, 68, 68, 1);
   padding: 15px 40px;
@@ -262,9 +264,42 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 15px;
+  row-gap: 15px;
+  grid-template-rows: repeat(3, auto);
+}
+#best-selling-podyum > :nth-child(n+5) {
+  display: none;
 }
 
-#seller-product-img {
+.seller-img-container{
+  display: flex;
+  position: relative;
+  background-color: transparent;
+  height: 350px;
+  padding: 20px;
+
+}
+.seller-img-container img {
   width: 100%;
   object-fit: contain;
+}
+
+.seller-tools-bar {
+  display: grid;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  gap: 20px;
+}
+
+.seller-tools-bar button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.best-seller-card {
+  display: grid;
+  gap: 15px;
 }
