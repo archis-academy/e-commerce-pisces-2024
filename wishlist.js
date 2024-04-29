@@ -79,3 +79,9 @@ function deleteWishlistProduct(productId) {
     JSON.stringify(filteredWishlistProducts)
   );
 }
+
+const countPiece = JSON.parse(localStorage.getItem("wishlistProducts")).length;
+
+const countTextArea = document.querySelector("#count");
+
+countTextArea.innerHTML = countPiece;
