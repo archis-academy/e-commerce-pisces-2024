@@ -19,7 +19,7 @@
           <a href="index.html" class="shop-now-btn">ShopNow</a>
         </p>
 
-        <button id="select-language">English</button>
+        <button id="select-language">English <i class="fa-solid fa-caret-down"></i></button>
       </div>
       <div class="loginpage-nav-container">
         <div class="Exclusive-logo">
@@ -34,8 +34,8 @@
           </ul>
         </div>
         <div class="loginpage-search-btn">
-          <input type="text" placeholder="What are you looking for?" />
-          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+          <input id="mySearch" type="text" placeholder="What are you looking for?" />
+          <button onclick="searchValue()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
       </div>
       <div class="loginpage-main">
@@ -48,11 +48,14 @@
             <h5>Enter your details below</h5>
           </div>
           <div class="login-input-div">
-            <input type="email" placeholder="Email or Phone Number" />
-            <input type="password" placeholder="Passowrd" />
+            <input id="emailInput" type="email" placeholder="Email or Phone Number" />
+            <input id="passwordInput" type="password" placeholder="Passowrd" />
+          </div>
+          <div class="error-user-data">
+            <p>Email or password is incorrect. Please try again</p>
           </div>
           <div class="login-btn-container">
-            <button>Log In</button>
+            <button onclick="userValue()">Log In</button>
             <a href="#">Forget Passowrd?</a>
           </div>
         </div>
@@ -112,5 +115,6 @@
         </div>
       </footer>
     </div>
-  </body>
+    <script src="login.js"></script>
+  </body> 
 </html>

@@ -25,6 +25,7 @@
   border: none;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .loginpage-nav-container {
@@ -74,11 +75,12 @@
   width: 100%;
 }
 .loginpage-login-container {
-  padding: 20px;
+  padding: 20px 80px;
   display: grid;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  /* box-shadow: 0 0 5px gray; */
 }
 
 .login-heading-div {
@@ -181,4 +183,8 @@ footer {
 }
 #advice-for-app {
   color: gray;
+}
+.error-user-data {
+  display: none;
+  color: rgba(219, 68, 68, 1);
 }
