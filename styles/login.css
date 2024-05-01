@@ -68,12 +68,27 @@
 .loginpage-main {
   display: flex;
   gap: 40px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .loginpage-main-img img {
   object-fit: contain;
   width: 100%;
 }
+
+@media screen and (max-width: 1000px) {
+  .loginpage-main-img {
+    order: 2;
+    margin: 0 auto;
+  }
+  .loginpage-main {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .loginpage-login-container {
+    row-gap: 30px;
+  }
+}
+
 .loginpage-login-container {
   padding: 20px 80px;
   display: grid;
