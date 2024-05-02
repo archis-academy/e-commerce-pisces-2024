@@ -265,4 +265,20 @@
   color: rgba(219, 68, 68, 1);
   font-weight: bold;
 }
+
+.allExploreDiv {
+  max-width: 1250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.allExploreProducts {
+  padding: 20px 40px;
+  background-color: rgba(219, 68, 68, 1);
+  border: none;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
 /* Esat/E-6/Homepage-Explore-Products End */

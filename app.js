@@ -309,7 +309,7 @@ function exploreProduct() {
     </div>
       `;
     })
-    .join(""); // Diziyi birleştirerek tek bir string haline getir
+    .join("");
 
   exploreProductSlider.innerHTML = exploreProductsHTML;
 }
