@@ -151,9 +151,9 @@ function addToWishlist(productId) {
   } else {
     deleteWishlistProduct(productId);
     heartIcons.forEach((heartIcon) => {
-       heartIcon.classList.add("fa-regular");
-       heartIcon.classList.remove("fa-solid");
-    })
+      heartIcon.classList.add("fa-regular");
+      heartIcon.classList.remove("fa-solid");
+    });
   }
 }
 
