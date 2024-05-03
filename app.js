@@ -90,7 +90,9 @@ function renderTodays() {
           <div class="products-ispect-box">
           <button 
           onclick="addToWishlist(${product.id})">
-          <i id="heart-icon-${product.id}" class="fa-regular fa-heart"></i>
+          <i id="heart-icon-${
+            product.id
+          }" class="fa-regular fa-heart heart-icon-${product.id}"></i>
           </button> 
           <button onclick="addToCartlist(${
             product.id
@@ -124,7 +126,7 @@ function renderTodays() {
 }
 
 function addToWishlist(productId) {
-  const heartIcon = document.querySelector(`#heart-icon-${productId}`);
+  const heartIcons = document.querySelectorAll(`.heart-icon-${productId}`);
 
   const wishlistProducts =
     JSON.parse(localStorage.getItem("wishlistProducts")) || [];
@@ -142,12 +144,16 @@ function addToWishlist(productId) {
       "wishlistProducts",
       JSON.stringify([...wishlistProducts, productToAdd])
     );
-    heartIcon.classList.remove("fa-regular");
-    heartIcon.classList.add("fa-solid");
+    heartIcons.forEach((heartIcon) => {
+      heartIcon.classList.remove("fa-regular");
+      heartIcon.classList.add("fa-solid");
+    });
   } else {
     deleteWishlistProduct(productId);
-    heartIcon.classList.add("fa-regular");
-    heartIcon.classList.remove("fa-solid");
+    heartIcons.forEach((heartIcon) => {
+       heartIcon.classList.add("fa-regular");
+       heartIcon.classList.remove("fa-solid");
+    })
   }
 }
 
@@ -288,7 +294,7 @@ function exploreProduct() {
         <div class="products-ispect-box">
         <button 
         onclick="addToWishlist(${product.id})">
-        <i id="heart-icon-${product.id}" class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-heart heart-icon-${product.id}"></i>
         </button> 
         <button onclick="addToCartlist(${product.id})"> <i class="fa-solid fa-cart-shopping"></i>
         </button>            
