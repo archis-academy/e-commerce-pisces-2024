@@ -5,18 +5,18 @@ function searchValue() {
 }
 
 function userValue() {
-  var email = document.getElementById("emailInput").value;
-  var password = document.getElementById("passwordInput").value;
+  let email = document.getElementById("emailInput").value;
+  let password = document.getElementById("passwordInput").value;
   
 
-  var realEmail = "archis@email.com";
-  var realPassword = "archis123";
+  let realEmail = "archis@email.com";
+  let realPassword = "archis123";
 
   if (email === realEmail && password === realPassword) {
     alert("Giriş başarılı");
     window.location.href = "index.html";
   } else {
-    var errorUserText = document.getElementsByClassName("error-user-data")[0];
+    let errorUserText = document.getElementsByClassName("error-user-data")[0];
     errorUserText.style.display = "block";
   }
 }
