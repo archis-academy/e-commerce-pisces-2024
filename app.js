@@ -7,6 +7,7 @@ async function getProducts() {
   const data = await response.json();
   allProducts = data;
   renderTodays();
+  exploreProduct();
   renderSellerProducts();
 }
 
@@ -74,8 +75,6 @@ cardNextArrow.addEventListener("click", () => {
   renderTodays();
 });
 
-// id="heart-icon-${product.id}"
-
 function renderTodays() {
   const flashSaleSlideProduct = allProducts.slice(
     todaysPrevQuatro,
@@ -92,7 +91,9 @@ function renderTodays() {
           <div class="products-ispect-box">
           <button 
           onclick="addToWishlist(${product.id})">
-          <i class="fa-regular fa-heart heart-icon-${product.id}"></i>
+          <i id="heart-icon-${
+            product.id
+          }" class="fa-regular fa-heart heart-icon-${product.id}"></i>
           </button> 
           <button onclick="addToCartlist(${
             product.id
@@ -310,3 +311,80 @@ wiewAllBestSeller.addEventListener("click", () => {
 });
 
 // Esat/E-4/Homepage-Best-Selling-Products End
+
+
+// Esat/E-6/Homepage-Explore-Products Start
+
+let explorePrevQuatro = 0;
+let exploreAfterQuatro = 8;
+
+const exploreNextArrow = document.querySelector(".explore-btn-right");
+const explorePrevArrow = document.querySelector(".explore-btn-left");
+
+explorePrevArrow.addEventListener("click", () => {
+  exploreAfterQuatro -= 8;
+  explorePrevQuatro -= 8;
+  if (exploreAfterQuatro >= allProducts.indexOf(0)) {
+    explorePrevQuatro = 0;
+    exploreAfterQuatro = 8;
+  }
+  exploreProduct();
+});
+
+exploreNextArrow.addEventListener("click", () => {
+  exploreAfterQuatro += 8;
+  explorePrevQuatro += 8;
+  if (exploreAfterQuatro >= allProducts.length) {
+    explorePrevQuatro = 0;
+    exploreAfterQuatro = 8;
+  }
+  exploreProduct();
+});
+
+function exploreProduct() {
+  const exploreProductSlider = document.querySelector(
+    ".explore-products-slider"
+  );
+  const exploreProducts = allProducts.slice(
+    explorePrevQuatro,
+    exploreAfterQuatro
+  );
+
+  const exploreProductsHTML = exploreProducts
+    .map((product) => {
+      return `
+      <div class="card-for-products">
+      <div class="products-img-container">
+          
+        <img src= ${product.image} alt= ${product.title}
+        class="flash-product-img-${product.id}" id="flash-product-img">
+        <div class="products-ispect-box">
+        <button 
+        onclick="addToWishlist(${product.id})">
+        <i class="fa-regular fa-heart heart-icon-${product.id}"></i>
+        </button> 
+        <button onclick="addToCartlist(${product.id})"> <i class="fa-solid fa-cart-shopping"></i>
+        </button>            
+        </div>
+        <div class=products-add-cart> <button onclick="addToCartlist(${product.id})"> ADD TO CART </button> </div>
+      </div>
+      <h4> ${product.title}</h4>
+    
+      <span class="explore-product-old-price">$${product.price}</span></p>
+      <div class="star-for-product">
+              <img src="./images/star-for-vote.png" alt="">
+              <img src="./images/star-for-vote.png" alt="">
+              <img src="./images/star-for-vote.png" alt="">
+              <img src="./images/star-for-vote.png" alt="">
+              <img src="./images/star-for-vote.png" alt="">
+              <span>(${product.rating.count})</span>
+      </div>
+    </div>
+      `;
+    })
+    .join("");
+
+  exploreProductSlider.innerHTML = exploreProductsHTML;
+}
+
+// Esat/E-6/Homepage-Explore-Products End
