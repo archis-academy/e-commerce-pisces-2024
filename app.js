@@ -8,6 +8,7 @@ async function getProducts() {
   allProducts = data;
   renderTodays();
   exploreProduct();
+  renderSellerProducts();
 }
 
 getProducts();
@@ -245,6 +246,72 @@ categoriesBox.forEach((categories) => {
   });
 });
 // Esat/E-3/Homepage-By-Category END
+
+// Esat/E-4/Homepage-Best-Selling-Products START
+
+function renderSellerProducts() {
+  const sellerProducts = allProducts.slice(8, 20);
+
+  const sellerProductsHTML = sellerProducts
+    .map((product) => {
+      return `
+      <div class="best-seller-card">
+      <div class="seller-img-container">
+       <img src="${product.image}">
+        <div class="seller-tools-bar">
+          <button onclick="addToWishlist(${product.id})">
+            <i  class="fa-regular fa-heart heart-icon-${product.id}"></i>
+          </button>
+          <button
+            onclick="addToCartlist(${product.id})"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+        </div>
+        <div class="products-add-cart">
+          <button
+            onclick="addToCartlist(${product.id})"
+          >
+            ADD TO CART
+          </button>
+        </div>
+      </div>
+      <h4>${product.title}</h4>
+      <p class="flash-product-new-price">
+        ${(product.price - (product.price * 50) / 100).toFixed(2)}
+        <span class="flash-product-old-price"><s>${product.price}</s></span>
+      </p>
+      <div class="star-for-product">
+        <img src="./images/star-for-vote.png" alt="" />
+        <img src="./images/star-for-vote.png" alt="" />
+        <img src="./images/star-for-vote.png" alt="" />
+        <img src="./images/star-for-vote.png" alt="" />
+        <img src="./images/star-for-vote.png" alt="" />
+        <span>(${product.rating.count})</span>
+      </div>
+    </div>
+    `;
+    })
+    .join("");
+
+  const bestSellingContainer = document.getElementById("best-selling-podyum");
+  bestSellingContainer.innerHTML = sellerProductsHTML;
+}
+
+const wiewAllBestSeller = document.querySelector("#best-selling-wiewall");
+
+wiewAllBestSeller.addEventListener("click", () => {
+  const bestSellingItems = document.querySelectorAll(
+    "#best-selling-podyum > :nth-child(n+5)"
+  );
+
+  bestSellingItems.forEach((item) => {
+    item.style.display = item.style.display === "none" ? "grid" : "none";
+  });
+});
+
+// Esat/E-4/Homepage-Best-Selling-Products End
+
 
 // Esat/E-6/Homepage-Explore-Products Start
 

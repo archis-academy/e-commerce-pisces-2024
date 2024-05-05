@@ -242,6 +242,68 @@
   }
 }
 /* Esat/E-3/Homepage-By-Category END */
+/* Esat/E-4/Homepage-Best-Seller-Products START */
+
+.best-selling-products-container {
+  display: grid;
+  max-width: 1250px;
+  margin: 60px auto;
+  row-gap: 20px;
+  font-family: 'poppins', sans-serif;
+}
+
+#best-selling-wiewall {
+  border: none;
+  background-color: rgba(219, 68, 68, 1);
+  padding: 15px 40px;
+  color: white;
+  cursor: pointer;
+}
+
+#best-selling-podyum {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  row-gap: 15px;
+  grid-template-rows: repeat(3, auto);
+}
+#best-selling-podyum > :nth-child(n+5) {
+  display: none;
+}
+
+.seller-img-container{
+  display: flex;
+  position: relative;
+  background-color: transparent;
+  height: 350px;
+  padding: 20px;
+
+}
+.seller-img-container img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.seller-tools-bar {
+  display: grid;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  gap: 20px;
+}
+
+.seller-tools-bar button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.best-seller-card {
+  display: grid;
+  gap: 15px;
+}
+/* Esat/E-4/Homepage-Best-Seller-Products End */
 
 /* Esat/E-6/Homepage-Explore-Products Start */
 
