@@ -7,6 +7,8 @@ async function getProducts() {
   const data = await response.json();
   allProducts = data;
   renderTodays();
+  exploreProduct();
+  renderSellerProducts();
 }
 
 getProducts();
@@ -89,7 +91,9 @@ function renderTodays() {
           <div class="products-ispect-box">
           <button 
           onclick="addToWishlist(${product.id})">
-          <i id="heart-icon-${product.id}" class="fa-regular fa-heart"></i>
+          <i id="heart-icon-${
+            product.id
+          }" class="fa-regular fa-heart heart-icon-${product.id}"></i>
           </button> 
           <button onclick="addToCartlist(${
             product.id
@@ -123,7 +127,7 @@ function renderTodays() {
 }
 
 function addToWishlist(productId) {
-  const heartIcon = document.querySelector(`#heart-icon-${productId}`);
+  const heartIcons = document.querySelectorAll(`.heart-icon-${productId}`);
 
   const wishlistProducts =
     JSON.parse(localStorage.getItem("wishlistProducts")) || [];
@@ -141,12 +145,16 @@ function addToWishlist(productId) {
       "wishlistProducts",
       JSON.stringify([...wishlistProducts, productToAdd])
     );
-    heartIcon.classList.remove("fa-regular");
-    heartIcon.classList.add("fa-solid");
+    heartIcons.forEach((heartIcon) => {
+      heartIcon.classList.remove("fa-regular");
+      heartIcon.classList.add("fa-solid");
+    });
   } else {
     deleteWishlistProduct(productId);
-    heartIcon.classList.add("fa-regular");
-    heartIcon.classList.remove("fa-solid");
+    heartIcons.forEach((heartIcon) => {
+      heartIcon.classList.add("fa-regular");
+      heartIcon.classList.remove("fa-solid");
+    });
   }
 }
 
@@ -193,3 +201,190 @@ function deleteCartlistProducts(productId) {
 }
 
 // Esat/[TO-2]Homepage-Todays-product-END
+
+// Esat/E-3/Homepage-By-Category START
+const categoriesBox = document.querySelectorAll(".category-list");
+
+categoriesBox.forEach((categories) => {
+  categories.addEventListener("mouseenter", () => {
+    const categoriesPaths = categories.querySelectorAll(".category-svg-path");
+    const categoriesTitle = categories.querySelectorAll(
+      ".slider-category-name"
+    );
+
+    if (categoriesPaths) {
+      categoriesPaths.forEach((path) => {
+        path.style.stroke = "white";
+      });
+    }
+    if (categoriesTitle) {
+      categoriesTitle.forEach((categoryTitle) => {
+        categoryTitle.style.color = "white";
+      });
+    }
+
+    categories.style.backgroundColor = "rgba(219, 68, 68, 1)";
+  });
+
+  categories.addEventListener("mouseleave", () => {
+    const categoriesPaths = categories.querySelectorAll(".category-svg-path");
+    const categoriesTitle = categories.querySelectorAll(
+      ".slider-category-name"
+    );
+
+    if (categoriesPaths) {
+      categoriesPaths.forEach((path) => {
+        path.style.stroke = "black";
+      });
+    }
+    if (categoriesTitle) {
+      categoriesTitle.forEach((categoryTitle) => {
+        categoryTitle.style.color = "black";
+      });
+    }
+    categories.style.backgroundColor = "white";
+  });
+});
+// Esat/E-3/Homepage-By-Category END
+
+// Esat/E-4/Homepage-Best-Selling-Products START
+
+function renderSellerProducts() {
+  const sellerProducts = allProducts.slice(8, 20);
+
+  const sellerProductsHTML = sellerProducts
+    .map((product) => {
+      return `
+      <div class="best-seller-card">
+      <div class="seller-img-container">
+       <img src="${product.image}">
+        <div class="seller-tools-bar">
+          <button onclick="addToWishlist(${product.id})">
+            <i  class="fa-regular fa-heart heart-icon-${product.id}"></i>
+          </button>
+          <button
+            onclick="addToCartlist(${product.id})"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+        </div>
+        <div class="products-add-cart">
+          <button
+            onclick="addToCartlist(${product.id})"
+          >
+            ADD TO CART
+          </button>
+        </div>
+      </div>
+      <h4>${product.title}</h4>
+      <p class="flash-product-new-price">
+        ${(product.price - (product.price * 50) / 100).toFixed(2)}
+        <span class="flash-product-old-price"><s>${product.price}</s></span>
+      </p>
+      <div class="star-for-product">
+        <img src="./images/star-for-vote.png" alt="" />
+        <img src="./images/star-for-vote.png" alt="" />
+        <img src="./images/star-for-vote.png" alt="" />
+        <img src="./images/star-for-vote.png" alt="" />
+        <img src="./images/star-for-vote.png" alt="" />
+        <span>(${product.rating.count})</span>
+      </div>
+    </div>
+    `;
+    })
+    .join("");
+
+  const bestSellingContainer = document.getElementById("best-selling-podyum");
+  bestSellingContainer.innerHTML = sellerProductsHTML;
+}
+
+const wiewAllBestSeller = document.querySelector("#best-selling-wiewall");
+
+wiewAllBestSeller.addEventListener("click", () => {
+  const bestSellingItems = document.querySelectorAll(
+    "#best-selling-podyum > :nth-child(n+5)"
+  );
+
+  bestSellingItems.forEach((item) => {
+    item.style.display = item.style.display === "none" ? "grid" : "none";
+  });
+});
+
+// Esat/E-4/Homepage-Best-Selling-Products End
+
+
+// Esat/E-6/Homepage-Explore-Products Start
+
+let explorePrevQuatro = 0;
+let exploreAfterQuatro = 8;
+
+const exploreNextArrow = document.querySelector(".explore-btn-right");
+const explorePrevArrow = document.querySelector(".explore-btn-left");
+
+explorePrevArrow.addEventListener("click", () => {
+  exploreAfterQuatro -= 8;
+  explorePrevQuatro -= 8;
+  if (exploreAfterQuatro >= allProducts.indexOf(0)) {
+    explorePrevQuatro = 0;
+    exploreAfterQuatro = 8;
+  }
+  exploreProduct();
+});
+
+exploreNextArrow.addEventListener("click", () => {
+  exploreAfterQuatro += 8;
+  explorePrevQuatro += 8;
+  if (exploreAfterQuatro >= allProducts.length) {
+    explorePrevQuatro = 0;
+    exploreAfterQuatro = 8;
+  }
+  exploreProduct();
+});
+
+function exploreProduct() {
+  const exploreProductSlider = document.querySelector(
+    ".explore-products-slider"
+  );
+  const exploreProducts = allProducts.slice(
+    explorePrevQuatro,
+    exploreAfterQuatro
+  );
+
+  const exploreProductsHTML = exploreProducts
+    .map((product) => {
+      return `
+      <div class="card-for-products">
+      <div class="products-img-container">
+          
+        <img src= ${product.image} alt= ${product.title}
+        class="flash-product-img-${product.id}" id="flash-product-img">
+        <div class="products-ispect-box">
+        <button 
+        onclick="addToWishlist(${product.id})">
+        <i class="fa-regular fa-heart heart-icon-${product.id}"></i>
+        </button> 
+        <button onclick="addToCartlist(${product.id})"> <i class="fa-solid fa-cart-shopping"></i>
+        </button>            
+        </div>
+        <div class=products-add-cart> <button onclick="addToCartlist(${product.id})"> ADD TO CART </button> </div>
+      </div>
+      <h4> ${product.title}</h4>
+    
+      <span class="explore-product-old-price">$${product.price}</span></p>
+      <div class="star-for-product">
+              <img src="./images/star-for-vote.png" alt="">
+              <img src="./images/star-for-vote.png" alt="">
+              <img src="./images/star-for-vote.png" alt="">
+              <img src="./images/star-for-vote.png" alt="">
+              <img src="./images/star-for-vote.png" alt="">
+              <span>(${product.rating.count})</span>
+      </div>
+    </div>
+      `;
+    })
+    .join("");
+
+  exploreProductSlider.innerHTML = exploreProductsHTML;
+}
+
+// Esat/E-6/Homepage-Explore-Products End
