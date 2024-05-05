@@ -5,6 +5,8 @@ async function getProducts() {
   const data = await response.json();
   allProducts = data;
   renderTodays();
+  renderWishlistProducts();
+
 }
 
 getProducts();
@@ -64,6 +66,7 @@ function deleteCartlistProducts(productId) {
     "cartProducts",
     JSON.stringify(filteredCartlistProducts)
   );
+  
 }
 
 function deleteWishlistProduct(productId) {
@@ -78,10 +81,15 @@ function deleteWishlistProduct(productId) {
     "wishlistProducts",
     JSON.stringify(filteredWishlistProducts)
   );
-}
+  renderWishlistProducts();
+  WishlistProductsNumber()
 
+}
+function WishlistProductsNumber() {
 const countPiece = JSON.parse(localStorage.getItem("wishlistProducts")).length;
 
 const countTextArea = document.querySelector("#count");
 
 countTextArea.innerHTML = countPiece;
+}
+WishlistProductsNumber()
