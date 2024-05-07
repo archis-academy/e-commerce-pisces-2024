@@ -175,6 +175,8 @@
 .browser-category-container {
   max-width: 1250px;
   margin: 0 auto;
+  display: grid;
+  row-gap: 30px;
 }
 .browser-category-title {
   display: flex;
@@ -210,7 +212,6 @@
   background-color: rgba(245, 245, 245, 1);
   border-radius: 30px;
   padding: 10px;
-  margin: 5%;
 }
 .browse-category-slider {
   display: flex;
@@ -342,5 +343,7 @@
   margin-top: 15px;
   cursor: pointer;
 }
-
+.twin-explore-product {
+  margin: 20px 0;
+}
 /* Esat/E-6/Homepage-Explore-Products End */
